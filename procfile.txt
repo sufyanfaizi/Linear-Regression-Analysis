@@ -1,1 +1,1 @@
-web: gunicorn script:linearregressionapp1
+web: gunicorn flask_app:linearregressionapp1
