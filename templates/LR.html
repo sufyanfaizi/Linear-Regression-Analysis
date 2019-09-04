@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+</head>
+
+<body style="background-color:MediumTurquoise;">
+
+<h1 align="center"> Profit Prediction </h1>
+
+<div class="login">
+    
+    <form action="{{ url_for('LR_prediction') }}"method="post">
+        <input type="text" name="Profit" placeholder="Profit in $10000" required="required"/>
+        <br>
+        <button type='submit' class="btn btn_primary btn_block btn_large">Predict Population</button>
+    </form>
+
+    {{prediction_text}}
+
+</div>
+
+</body>
+
+</html>
