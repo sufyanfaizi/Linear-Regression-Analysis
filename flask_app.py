@@ -10,18 +10,19 @@ from flask import Flask , request , render_template
 import numpy as np
 from LinearRegression import lRegression
 from LRMultiple import LR_multiple
-app = Flask(__name__)
 
-@app.route('/')
+flask_app = Flask(__name__)
+
+@flask_app.route('/')
 def home():
     return render_template('home.html')
 
-@app.route('/LR')
+@flask_app.route('/LR')
 def  LR():
     return render_template('LR.html')
 
     
-@app.route('/LR_prediction', methods=['post'])
+@flask_app.route('/LR_prediction', methods=['post'])
 def  LR_prediction():
     
     initial_features = [float(x)/10000  for x in request.form.values()]
@@ -33,12 +34,12 @@ def  LR_prediction():
     return render_template('LR.html', prediction_text = string)
 
 
-@app.route('/MLR')
+@flask_app.route('/MLR')
 def MLR():
     return render_template('MLR.html')
 
 
-@app.route('/MLR_prediction', methods=['post'])
+@flask_app.route('/MLR_prediction', methods=['post'])
 def MLR_prediction():
     features = [float(x) for x in request.form.values()]
     features = np.array(features) .reshape((1,2))
@@ -53,4 +54,4 @@ def MLR_prediction():
  
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    flask_app.run(debug = True)
